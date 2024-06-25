@@ -36,20 +36,45 @@ async function run() {
     // console.log("Inserted document:", insertManyResult);
     // console.log("Inserted document:", insertResult);
 
-    // READ / DISPLAY DATA
-    // display all data
-    const allData = await collection.find().toArray();
-    console.log("data : ", allData);
+    // // READ / DISPLAY DATA
+    // // display all data
+    // const allData = await collection.find().toArray();
+    // console.log("data : ", allData);
 
-    // display data based on criteria
-    const data = await collection.find({ name: "hillary" }).toArray();
-    console.log("data : ", data);
+    // // display data based on criteria
+    // const data = await collection.find({ name: "hillary" }).toArray();
+    // console.log("data : ", data);
 
+    // // based id
+    // const dataID = await collection
+    //   .find({ _id: new ObjectId("667a49a5176b6d31bfa4fe8d") })
+    //   .toArray();
+    // console.log("data with id : ", dataID);
+
+    // UPDATE DATA
     // based id
-    const dataID = await collection
-      .find({ _id: new ObjectId("667a49a5176b6d31bfa4fe8d") })
-      .toArray();
-    console.log("data with id : ", dataID);
+    const result = await collection.updateOne(
+      { _id: new ObjectId("667a45afcba160e155e21479") },
+      {
+        $set: {
+          name: "contoh",
+          email: "contoh@gmail.com",
+        },
+      }
+    );
+    console.log("data has been updated ", result);
+
+    // update a lot of data, use update many
+    // const manyResult = await collection.updateMany(
+    //   { name: 'adel'},
+    //   {
+    //     $set: {
+    //       name: "adelcutie",
+    //       email: "adelcutiee@gmail.com",
+    //     },
+    //   }
+    // );
+    // console.log("data has been updated ", manyResult);
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
