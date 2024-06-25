@@ -38,18 +38,18 @@ async function run() {
 
     // READ / DISPLAY DATA
     // display all data
-    // const allData = await collection.find().toArray();
-    // console.log("data : ", allData);
+    const allData = await collection.find().toArray();
+    console.log("data : ", allData);
 
     // display data based on criteria
-    // const data = await collection.find({ name: "hillary" }).toArray();
-    // console.log("data : ", data);
+    const data = await collection.find({ name: "hillary" }).toArray();
+    console.log("data : ", data);
 
     // based id
-    // const dataID = await collection
-    //   .find({ _id: new ObjectId("667a49a5176b6d31bfa4fe8d") })
-    //   .toArray();
-    // console.log("data with id : ", dataID);
+    const dataID = await collection
+      .find({ _id: new ObjectId("667a49a5176b6d31bfa4fe8d") })
+      .toArray();
+    console.log("data with id : ", dataID);
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
