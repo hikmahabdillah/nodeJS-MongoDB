@@ -53,16 +53,16 @@ async function run() {
 
     // UPDATE DATA
     // based id
-    const result = await collection.updateOne(
-      { _id: new ObjectId("667a45afcba160e155e21479") },
-      {
-        $set: {
-          name: "contoh",
-          email: "contoh@gmail.com",
-        },
-      }
-    );
-    console.log("data has been updated ", result);
+    // const result = await collection.updateOne(
+    //   { _id: new ObjectId("667a45afcba160e155e21479") },
+    //   {
+    //     $set: {
+    //       name: "contoh",
+    //       email: "contoh@gmail.com",
+    //     },
+    //   }
+    // );
+    // console.log("data has been updated ", result);
 
     // update a lot of data, use update many
     // const manyResult = await collection.updateMany(
@@ -75,6 +75,17 @@ async function run() {
     //   }
     // );
     // console.log("data has been updated ", manyResult);
+
+    // DELETE DATA
+    // delete one data based on id
+    await collection.deleteOne({
+      _id: new ObjectId("667a45afcba160e155e21479"),
+    });
+
+    // delete many data
+    // await collection.deleteMany({
+    //   name: "jaja",
+    // });
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
